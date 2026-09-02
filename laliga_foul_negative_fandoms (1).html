@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Die unflätigsten &amp; negativsten La-Liga-Fangemeinden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0D12;
+    --panel:#12151C;
+    --panel2:#171B24;
+    --line: rgba(236,233,225,0.10);
+    --line-strong: rgba(236,233,225,0.18);
+    --chalk:#ECE9E1;
+    --dim:#8A93A6;
+    --orange:#FF6A3D;
+    --orange-dim: rgba(255,106,61,0.18);
+    --foul:#E23B4E;
+    --foul-dim: rgba(226,59,78,0.16);
+    --blue:#4C8DFF;
+    --blue-dim: rgba(76,141,255,0.16);
+    --green:#3DDC97;
+    --gold:#FFC145;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:transparent;}
+  .wrap{
+    width:100%;
+    max-width:900px;
+    margin:0 auto;
+    background: var(--ink);
+    color:var(--chalk);
+    font-family:'Inter',sans-serif;
+    border:1px solid var(--line-strong);
+    border-radius:14px;
+    overflow:hidden;
+    position:relative;
+  }
+
+  header{
+    position:relative; z-index:2;
+    padding:26px 34px 18px;
+    border-bottom:1px solid var(--line);
+  }
+  .lang-switch{
+    display:flex; gap:14px; margin-bottom:22px; flex-wrap:wrap;
+  }
+  .lang-btn{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    font-size:22px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:var(--dim);
+    background:var(--panel2);
+    border:1px solid var(--line-strong);
+    padding:10px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:all .15s ease;
+    user-select:none;
+    line-height:1;
+  }
+  .lang-btn:hover{ color:var(--chalk); border-color:rgba(236,233,225,0.3); }
+  .lang-btn.active{
+    color:var(--ink); background:var(--chalk); border-color:var(--chalk);
+  }
+  h1{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:36px;
+    line-height:1.0;
+    letter-spacing:0.5px;
+    margin:0 0 8px;
+  }
+  h1 .white{color:var(--chalk);}
+  h1 .accent{color:var(--foul);}
+  .sub{
+    font-size:14px; color:var(--dim); max-width:640px; line-height:1.5;
+  }
+
+  .switch-label{
+    position:relative; z-index:2;
+    font-family:'Space Mono',monospace;
+    font-size:15px; letter-spacing:1.8px; text-transform:uppercase;
+    color:var(--chalk); font-weight:700;
+    padding:20px 34px 0;
+  }
+
+  nav.tabs{
+    position:relative; z-index:2;
+    display:flex; flex-wrap:wrap; gap:8px;
+    padding:10px 34px 0;
+  }
+  .tab{
+    font-family:'Space Mono',monospace;
+    font-size:11.5px; letter-spacing:1.2px; text-transform:uppercase;
+    font-weight:700;
+    color:var(--dim);
+    background:var(--panel2);
+    border:1px solid var(--line-strong);
+    padding:9px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:all .18s ease;
+    user-select:none;
+  }
+  .tab:hover{ color:var(--chalk); border-color:rgba(236,233,225,0.3); }
+  .tab.active{
+    color:var(--ink);
+    background:var(--chalk);
+    border-color:var(--chalk);
+  }
+  .tab.active[data-tone="foul"]{ background:var(--foul); color:#fff; border-color:var(--foul);}
+  .tab.active[data-tone="neg"]{ background:var(--orange); color:#1a0a03; border-color:var(--orange);}
+  .tab.active[data-tone="pos"]{ background:var(--blue); color:#fff; border-color:var(--blue);}
+  .tab.active[data-tone="polite"]{ background:var(--green); color:#08160f; border-color:var(--green);}
+  .tab.active[data-tone="kw"]{ background:var(--gold); color:#1a0a03; border-color:var(--gold);}
+
+  .panel-meta{
+    position:relative; z-index:2;
+    padding:20px 34px 0;
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:'Space Mono',monospace;
+    gap:12px;
+  }
+  .panel-title{ font-size:13px; letter-spacing:1.2px; text-transform:uppercase; color:var(--chalk); font-weight:700;}
+  .panel-note{ font-size:11px; color:var(--dim); text-align:right; white-space:nowrap;}
+
+  main{ position:relative; z-index:2; padding:14px 34px 6px; }
+
+  .row{
+    display:grid;
+    grid-template-columns:34px 1fr 84px;
+    align-items:center;
+    gap:14px;
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .row:last-child{border-bottom:none;}
+  .rank{
+    font-family:'Space Mono',monospace;
+    font-weight:700; font-size:13px;
+    color:var(--dim);
+    width:34px; height:24px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:4px;
+  }
+  .row.top .rank{ background:var(--foul); color:#fff; }
+  .row.top.neg .rank{ background:var(--orange); color:#1a0a03; }
+  .row.top.pos .rank{ background:var(--blue); color:#fff; }
+  .row.top.polite .rank{ background:var(--green); color:#08160f; }
+  .team-line{ min-width:0; }
+  .team-name{
+    font-size:14.5px; font-weight:600; letter-spacing:0.2px;
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    margin-bottom:5px;
+  }
+  .row.top .team-name{ font-weight:800; }
+  .bar-track{
+    position:relative;
+    height:9px; border-radius:5px;
+    background:rgba(236,233,225,0.07);
+    overflow:hidden;
+  }
+  .bar-fill{
+    position:absolute; left:0; top:0; bottom:0;
+    border-radius:5px;
+    background:linear-gradient(90deg, var(--foul), #ff7a52);
+    transition:width .5s ease;
+  }
+  .bar-fill.pos{ background:linear-gradient(90deg, #2f6fd6, var(--blue)); }
+  .bar-fill.polite{ background:linear-gradient(90deg, #2bb989, var(--green)); }
+  .bar-fill.neg{ background:linear-gradient(90deg, var(--orange), #ffb066); }
+  .bar-fill.kw{ background:linear-gradient(90deg, #c99a1a, var(--gold)); }
+  .pct{
+    font-family:'Space Mono',monospace;
+    font-weight:700; font-size:15px; text-align:right;
+    color:var(--chalk);
+  }
+  .row.top .pct{ color:var(--foul); }
+  .row.top.neg .pct{ color:var(--orange); }
+  .row.top.pos .pct{ color:var(--blue); }
+  .row.top.polite .pct{ color:var(--green); }
+  .row.top.kw .pct{ color:var(--gold); }
+
+  .kw-tag{
+    font-family:'Space Mono',monospace;font-weight:700;color:var(--gold);
+    background:var(--orange-dim);border:1px solid rgba(255,193,69,0.35);
+    padding:2px 8px;border-radius:5px;font-size:11px;
+  }
+
+  .status-row{
+    display:grid;
+    grid-template-columns:34px 1fr auto;
+    align-items:center;
+    gap:14px;
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    opacity:0.6;
+  }
+  .status-row:last-child{ border-bottom:none; }
+  .status-team{
+    font-size:14px; font-weight:600; color:var(--dim);
+  }
+  .status-tag{
+    font-family:'Space Mono',monospace;
+    font-size:10px; letter-spacing:0.6px; text-transform:uppercase;
+    color:var(--dim);
+    background:var(--panel2);
+    border:1px solid var(--line-strong);
+    padding:4px 10px;
+    border-radius:6px;
+    white-space:nowrap;
+  }
+  .excluded-heading{
+    font-family:'Space Mono',monospace;
+    font-size:10.5px; letter-spacing:1px; text-transform:uppercase;
+    color:var(--dim);
+    padding:16px 0 6px;
+    border-top:1px solid var(--line-strong);
+    margin-top:6px;
+  }
+
+  footer{
+    position:relative; z-index:2;
+    padding:20px 34px 26px;
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:8px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .footer-line{
+    font-family:'Space Mono',monospace;
+    font-size:10px; color:var(--dim); letter-spacing:0.5px;
+  }
+  .brand{
+    font-family:'Anton',sans-serif;
+    font-size:15px; letter-spacing:0.5px;
+    color:var(--chalk);
+  }
+
+  .trophy{ font-size:14px; }
+
+  @media (max-width:560px){
+    h1{ font-size:26px; }
+    .lang-btn{ font-size:16px; padding:8px 16px; }
+    header, .switch-label, nav.tabs, .panel-meta, main, footer{ padding-left:18px; padding-right:18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap" id="card">
+
+  <header>
+    <div class="lang-switch" id="langSwitch">
+      <div class="lang-btn active" data-lang="de">Auf Deutsch</div>
+      <div class="lang-btn" data-lang="en">In English</div>
+      <div class="lang-btn" data-lang="es">En Español</div>
+    </div>
+    <h1 id="h1"></h1>
+    <p class="sub" id="sub"></p>
+  </header>
+
+  <div class="switch-label" id="switchLabel"></div>
+
+  <nav class="tabs" id="tabs">
+    <div class="tab active" data-tone="foul" data-view="vulgar"></div>
+    <div class="tab" data-tone="neg" data-view="negative"></div>
+    <div class="tab" data-tone="kw" data-view="keywords"></div>
+    <div class="tab" data-tone="pos" data-view="positive"></div>
+    <div class="tab" data-tone="polite" data-view="polite"></div>
+  </nav>
+
+  <div class="panel-meta">
+    <span class="panel-title" id="panelTitle"></span>
+    <span class="panel-note" id="panelNote"></span>
+  </div>
+
+  <main id="main"></main>
+
+  <footer>
+    <span class="footer-line" id="footerDate"></span>
+    <span class="brand">Wettbasis.com</span>
+  </footer>
+</div>
+
+<script>
+const DATA = {
+  vulgar: [
+    {"team":"Athletic Bilbao","pct":17.1728972},
+    {"team":"Atlético Madrid","pct":15.16776413},
+    {"team":"Real Madrid","pct":12.40125735},
+    {"team":"Barcelona","pct":11.99328376},
+    {"team":"Rayo Vallecano","pct":11.0989011},
+    {"team":"Sevilla","pct":9.226190476},
+    {"team":"Real Betis","pct":8.664259928},
+    {"team":"Deportivo La Coruña","pct":8.636363636},
+    {"team":"Espanyol","pct":8.287292818},
+    {"team":"Valencia","pct":6.93877551},
+    {"team":"Celta Vigo","pct":2.43902439}
+  ],
+  polite: [
+    {"team":"Celta Vigo","pct":2.43902439},
+    {"team":"Valencia","pct":6.93877551},
+    {"team":"Espanyol","pct":8.287292818},
+    {"team":"Deportivo La Coruña","pct":8.636363636},
+    {"team":"Real Betis","pct":8.664259928},
+    {"team":"Sevilla","pct":9.226190476},
+    {"team":"Rayo Vallecano","pct":11.0989011},
+    {"team":"Barcelona","pct":11.99328376},
+    {"team":"Real Madrid","pct":12.40125735},
+    {"team":"Atlético Madrid","pct":15.16776413},
+    {"team":"Athletic Bilbao","pct":17.1728972}
+  ],
+  negative: [
+    {"team":"Athletic Bilbao","pct":54.55607477},
+    {"team":"Real Madrid","pct":53.59938044},
+    {"team":"Barcelona","pct":52.10781962},
+    {"team":"Atlético Madrid","pct":51.61650918},
+    {"team":"Rayo Vallecano","pct":38.02197802},
+    {"team":"Celta Vigo","pct":36.58536585},
+    {"team":"Sevilla","pct":34.22619048},
+    {"team":"Real Betis","pct":33.39350181},
+    {"team":"Espanyol","pct":32.0441989},
+    {"team":"Deportivo La Coruña","pct":31.47727273},
+    {"team":"Valencia","pct":30.81632653}
+  ],
+  positive: [
+    {"team":"Real Betis","pct":36.82310469},
+    {"team":"Celta Vigo","pct":34.75609756},
+    {"team":"Espanyol","pct":33.14917127},
+    {"team":"Valencia","pct":33.06122449},
+    {"team":"Deportivo La Coruña","pct":32.61363636},
+    {"team":"Rayo Vallecano","pct":31.86813187},
+    {"team":"Athletic Bilbao","pct":31.36682243},
+    {"team":"Sevilla","pct":29.76190476},
+    {"team":"Atlético Madrid","pct":26.00562416},
+    {"team":"Barcelona","pct":22.43143839},
+    {"team":"Real Madrid","pct":19.56175117}
+  ],
+  keywords: [
+    {"team":"Athletic Bilbao","word":"sh*t"},
+    {"team":"Atlético Madrid","word":"sh*t"},
+    {"team":"Barcelona","word":"sh*t"},
+    {"team":"Celta Vigo","word":"fu*k"},
+    {"team":"Deportivo La Coruña","word":"host*a / pu*a","tie":true},
+    {"team":"Espanyol","word":"pu*a"},
+    {"team":"Rayo Vallecano","word":"fu*k"},
+    {"team":"Real Betis","word":"sh*t"},
+    {"team":"Real Madrid","word":"sh*t"},
+    {"team":"Sevilla","word":"sh*t"},
+    {"team":"Valencia","word":"sh*t"}
+  ]
+};
+
+// excluded teams: reason "no_sub" = no subreddit, "low_vol" = subreddit exists but under comment threshold
+// Spanish-press club names, used only when currentLang === "es". EN/DE keep the base names in DATA/EXCLUDED.
+const ES_NAMES = {
+  "Athletic Bilbao": "Athletic Club",
+  "Atlético Madrid": "Atlético de Madrid",
+  "Barcelona": "FC Barcelona",
+  "Celta Vigo": "Celta de Vigo",
+  "Valencia": "Valencia CF",
+  "Espanyol": "RCD Espanyol",
+  "Deportivo La Coruña": "Deportivo de La Coruña",
+  "Racing Santander": "Racing de Santander"
+};
+function displayTeam(name){
+  return (currentLang === "es" && ES_NAMES[name]) ? ES_NAMES[name] : name;
+}
+
+const EXCLUDED = [
+  {"team":"Alavés","reason":"no_sub"},
+  {"team":"Elche","reason":"low_vol"},
+  {"team":"Getafe","reason":"low_vol"},
+  {"team":"Levante","reason":"low_vol"},
+  {"team":"Málaga","reason":"low_vol"},
+  {"team":"Osasuna","reason":"low_vol"},
+  {"team":"Racing Santander","reason":"no_sub"},
+  {"team":"Real Sociedad","reason":"no_sub"},
+  {"team":"Villarreal","reason":"low_vol"}
+];
+
+const I18N = {
+  de: {
+    title1: "Datenanalyse:",
+    title2: "Die unflätigsten & negativsten La-Liga-Fangemeinden",
+    sub: "Basierend auf einer Analyse von über 270.000 Fan-Kommentaren in den Subreddits der La-Liga-Vereine von August 2025 bis September 2026, ausgewertet auf Schimpfwörter und Stimmung.",
+    switchLabel: "Zwischen den Abschnitten wechseln, um den vollständigen Bericht zu erkunden",
+    tabs: {
+      vulgar: "Die unflätigsten Fangemeinden",
+      negative: "Die negativsten Fangemeinden",
+      keywords: "Meistgenutztes Schimpfwort pro Fangemeinde",
+      positive: "Die positivsten Fangemeinden",
+      polite: "Die höflichsten Fangemeinden"
+    },
+    panel: {
+      vulgar: { title: "Sortiert nach % der Kommentare mit Schimpfwörtern", note: "Hoch \u2192 Niedrig" },
+      negative: { title: "Sortiert nach % der Kommentare mit negativer Stimmung", note: "Hoch \u2192 Niedrig" },
+      keywords: { title: "Meistgenutztes Schimpfwort je Fangemeinde", note: "Alphabetisch" },
+      positive: { title: "Sortiert nach % der Kommentare mit positiver Stimmung", note: "Hoch \u2192 Niedrig" },
+      polite: { title: "Sortiert nach % der Kommentare mit Schimpfwörtern", note: "Niedrig \u2192 Hoch" }
+    },
+    excludedHeading: "Nicht im Ranking enthalten",
+    tags: { no_sub: "Kein Subreddit", low_vol: "Zu wenig Kommentare" },
+    footerDate: "Endgültiges Analysedatum: September 2026"
+  },
+  en: {
+    title1: "Data Analysis:",
+    title2: "The Most Foul-Mouthed & Negative La Liga Fandoms",
+    sub: "Based on an analysis of over 270,000 fan comments across all La Liga club subreddits from August 2025 to September 2026, screened for profanity and sentiment.",
+    switchLabel: "Switch between sections to explore the full report",
+    tabs: {
+      vulgar: "The Most Foul-Mouthed Fandoms",
+      negative: "The Most Negative Fandoms",
+      keywords: "Most Used Swear Word Per Fandom",
+      positive: "The Most Positive Fandoms",
+      polite: "The Most Polite Fandoms"
+    },
+    panel: {
+      vulgar: { title: "Ranked by % of comments containing swear words", note: "High \u2192 Low" },
+      negative: { title: "Ranked by % of comments with a negative tone", note: "High \u2192 Low" },
+      keywords: { title: "Most used swear word per fandom", note: "Alphabetical" },
+      positive: { title: "Ranked by % of comments with a positive tone", note: "High \u2192 Low" },
+      polite: { title: "Ranked by % of comments containing swear words", note: "Low \u2192 High" }
+    },
+    excludedHeading: "Not included in the ranking",
+    tags: { no_sub: "No subreddit", low_vol: "Not enough comments" },
+    footerDate: "Final date of analysis: September 2026"
+  },
+  es: {
+    title1: "Análisis de Datos:",
+    title2: "Las Aficiones Más Malhabladas y Negativas de LaLiga",
+    sub: "Basado en un análisis de más de 270.000 comentarios de aficionados en los subreddits de los clubes de LaLiga entre agosto de 2025 y septiembre de 2026, analizados en busca de vulgaridad y sentimiento.",
+    switchLabel: "Cambia entre secciones para explorar el informe completo",
+    tabs: {
+      vulgar: "Las Aficiones Más Malhabladas",
+      negative: "Las Aficiones Más Negativas",
+      keywords: "La Palabrota Más Usada Por Afición",
+      positive: "Las Aficiones Más Positivas",
+      polite: "Las Aficiones Más Educadas"
+    },
+    panel: {
+      vulgar: { title: "Clasificado por % de comentarios con palabrotas", note: "Alto \u2192 Bajo" },
+      negative: { title: "Clasificado por % de comentarios con tono negativo", note: "Alto \u2192 Bajo" },
+      keywords: { title: "Palabrota más usada por afición", note: "Alfabético" },
+      positive: { title: "Clasificado por % de comentarios con tono positivo", note: "Alto \u2192 Bajo" },
+      polite: { title: "Clasificado por % de comentarios con palabrotas", note: "Bajo \u2192 Alto" }
+    },
+    excludedHeading: "No incluidos en la clasificación",
+    tags: { no_sub: "Sin subreddit", low_vol: "Comentarios insuficientes" },
+    footerDate: "Fecha final del análisis: septiembre de 2026"
+  }
+};
+
+let currentLang = "de";
+let currentView = "vulgar";
+
+const TROPHIES = ["\u{1F947}","\u{1F948}","\u{1F949}"];
+
+function fmtPct(n){ return n.toFixed(2) + "%"; }
+
+function renderRanked(view){
+  const rows = DATA[view];
+  const maxVal = Math.max(...rows.map(r=>r.pct));
+  let rank = 0;
+  let html = "";
+  rows.forEach((r) => {
+    rank += 1;
+    const isTop = rank <= 3;
+    const toneClass = view==="positive" ? "pos" : (view==="polite" ? "polite" : (view==="negative" ? "neg" : ""));
+    const width = (r.pct/maxVal*100).toFixed(1);
+    html += `
+      <div class="row ${isTop ? 'top '+toneClass : ''}">
+        <div class="rank">${isTop ? '<span class="trophy">'+TROPHIES[rank-1]+'</span>' : rank}</div>
+        <div class="team-line">
+          <div class="team-name">${displayTeam(r.team)}</div>
+          <div class="bar-track"><div class="bar-fill ${toneClass}" style="width:${width}%"></div></div>
+        </div>
+        <div class="pct">${fmtPct(r.pct)}</div>
+      </div>`;
+  });
+  html += renderExcluded();
+  return html;
+}
+
+function renderKeywords(){
+  const rows = DATA.keywords;
+  let rank = 0;
+  let html = "";
+  rows.forEach((r) => {
+    rank += 1;
+    const isTop = false;
+    html += `
+      <div class="row">
+        <div class="rank">${rank}</div>
+        <div class="team-line">
+          <div class="team-name">${displayTeam(r.team)} <span class="kw-tag">${r.word}</span></div>
+        </div>
+        <div class="pct" style="font-size:11px;color:var(--dim);">${r.tie ? "TIE" : ""}</div>
+      </div>`;
+  });
+  html += renderExcluded();
+  return html;
+}
+
+function renderExcluded(){
+  const t = I18N[currentLang];
+  let html = `<div class="excluded-heading">${t.excludedHeading}</div>`;
+  EXCLUDED.forEach((r) => {
+    html += `
+      <div class="status-row">
+        <div></div>
+        <div class="status-team">${displayTeam(r.team)}</div>
+        <div class="status-tag">${t.tags[r.reason]}</div>
+      </div>`;
+  });
+  return html;
+}
+
+function setView(view){
+  currentView = view;
+  const t = I18N[currentLang];
+  const p = t.panel[view];
+  document.getElementById('panelTitle').textContent = p.title;
+  document.getElementById('panelNote').textContent = p.note;
+  document.getElementById('main').innerHTML = view === "keywords" ? renderKeywords() : renderRanked(view);
+
+  document.querySelectorAll('.tab').forEach(el => {
+    el.classList.toggle('active', el.dataset.view === view);
+  });
+}
+
+function setLang(lang){
+  currentLang = lang;
+  const t = I18N[lang];
+  document.documentElement.lang = lang;
+  document.getElementById('h1').innerHTML = `<span class="white">${t.title1}</span> <span class="accent">${t.title2}</span>`;
+  document.getElementById('sub').textContent = t.sub;
+  document.getElementById('switchLabel').textContent = t.switchLabel;
+  document.getElementById('footerDate').textContent = t.footerDate;
+
+  document.querySelectorAll('.tab').forEach(el => {
+    el.textContent = t.tabs[el.dataset.view];
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(el => {
+    el.classList.toggle('active', el.dataset.lang === lang);
+  });
+
+  setView(currentView);
+}
+
+document.querySelectorAll('.tab').forEach(el => {
+  el.addEventListener('click', () => setView(el.dataset.view));
+});
+document.querySelectorAll('.lang-btn').forEach(el => {
+  el.addEventListener('click', () => setLang(el.dataset.lang));
+});
+
+setLang('de');
+</script>
+
+</body>
+</html>
