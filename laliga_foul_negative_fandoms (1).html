@@ -358,7 +358,7 @@ const DATA = {
 };
 
 // excluded teams: reason "no_sub" = no subreddit, "low_vol" = subreddit exists but under comment threshold
-// Spanish-press club names, used only when currentLang === "es". EN/DE keep the base names in DATA/EXCLUDED.
+// Spanish-press club names, used only when currentLang === "es". EN/DE keep the base names in DATA/EXCLUDED, except where overridden below.
 const ES_NAMES = {
   "Athletic Bilbao": "Athletic Club",
   "Atlético Madrid": "Atlético de Madrid",
@@ -369,8 +369,13 @@ const ES_NAMES = {
   "Deportivo La Coruña": "Deportivo de La Coruña",
   "Racing Santander": "Racing de Santander"
 };
+const DE_NAMES = {
+  "Deportivo La Coruña": "Deportivo A Coruña"
+};
 function displayTeam(name){
-  return (currentLang === "es" && ES_NAMES[name]) ? ES_NAMES[name] : name;
+  if (currentLang === "es" && ES_NAMES[name]) return ES_NAMES[name];
+  if (currentLang === "de" && DE_NAMES[name]) return DE_NAMES[name];
+  return name;
 }
 
 const EXCLUDED = [
